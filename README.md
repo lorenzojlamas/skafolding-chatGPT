@@ -684,3 +684,27 @@ yarn-error.log*
 Este ejemplo excluye las dependencias instaladas con npm o yarn (node_modules), los archivos generados por la compilación y el cache de TypeScript (/dist, /build, /__generated__), los resultados de prueba (/coverage) y algunos archivos comunes que no deben ser rastreados por Git.
 
 Recuerde que el .gitignore solo excluye los archivos de la rama actual, por lo que si un archivo ha sido incluido en una rama previa, aun puede ser rastreado por Git.
+
+_Prompt_: Si quiero desarrollar local, me podrías dar un ejemplo de un archivo de podman-compose para levantar la base de datos ? 
+
+Si desea desarrollar localmente utilizando Podman Compose, puede crear un archivo podman-compose.yml con el siguiente contenido:
+
+```
+version: '3'
+services:
+  db:
+    image: postgres:latest
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_DB: database_name
+      POSTGRES_USER: database_user
+      POSTGRES_PASSWORD: database_password
+
+```
+
+Este archivo define un servicio llamado db que utiliza la imagen más reciente de PostgreSQL y expone el puerto 5432 en el host para que pueda ser accedido desde su aplicación. También establece las variables de entorno necesarias para configurar la base de datos.
+
+Una vez que haya creado el archivo podman-compose.yml, puede levantar el servicio de la base de datos con el comando podman-compose up. Esto creará un contenedor para la base de datos y la inicializará con las configuraciones especificadas en el archivo.
+
+Puede detener el servicio de la base de datos con el comando podman-compose down y volver a levantarlo en cualquier momento con podman-compose up. Estos comandos facilitan el desarrollo local y la configuración de su ambiente de desarrollo.

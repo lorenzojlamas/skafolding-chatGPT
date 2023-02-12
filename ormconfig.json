@@ -1,0 +1,16 @@
+{
+  "type": "postgres",
+  "host": "localhost",
+  "port": 5432,
+  "username": "postgres",
+  "password": "postgres",
+  "database": "microservice_db",
+  "synchronize": true,
+  "logging": false,
+  "entities": ["src/domain/models/**/*.ts"],
+  "migrations": ["src/infrastructure/db/migrations/**/*.ts"],
+  "cli": {
+    "entitiesDir": "src/domain/models",
+    "migrationsDir": "src/infrastructure/db/migrations"
+  }
+}
